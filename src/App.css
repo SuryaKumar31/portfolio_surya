@@ -1,0 +1,340 @@
+@font-face {
+  font-display: swap;
+  font-family: Alaska;
+  src: url(../src/fonts/alaska.ttf) format("truetype");
+}
+
+/* gradient styles */
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* common styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: Alaska;
+}
+
+::selection {
+  background-color: rgb(23, 56, 87);
+  color: rgb(255, 252, 252);
+}
+
+body {
+  font-family: Alaska;
+  background-color: rgb(18, 30, 43);
+}
+
+a {
+  color: black;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-stretch: 100%;
+  font-weight: 400;
+}
+
+.container {
+  width: 87%;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.container2 {
+  width: 85%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+/* heading shadow */
+
+.skill__heading,
+.academics__heading,
+.project__heading {
+  --x-offset: -0.0625em;
+  --y-offset: 0.0625em;
+  --stroke: 0.025em;
+  --background-color: #1e293b;
+  --stroke-color: lightblue;
+  --stroke-color: rgb(247, 247, 120);
+  text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
+    calc(var(--x-offset) - var(--stroke)) calc(var(--y-offset) + var(--stroke))
+      0px var(--stroke-color);
+}
+
+@supports (text-shadow: 1px 1px 1px 1px black) {
+  .skill__heading,
+  .academics__heading,
+  .project__heading {
+    text-shadow: var(--x-offset) var(--y-offset) 0px 0px var(--background-color),
+      var(--x-offset) var(--y-offset) var(--stroke) 0px var(--stroke-color);
+  }
+}
+/*  card designs - hero */
+
+.card {
+  padding: 1px;
+  background: rgb(0, 0, 0);
+  border-radius: 0.2rem;
+  position: relative;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -0.3em;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    hsla(65, 92%, 54%, 1) 0%,
+    hsla(192, 96%, 50%, 1) 50%,
+    hsla(65, 92%, 54%, 1) 100%
+  );
+
+  animation: rotation 7s linear infinite;
+  z-index: -1;
+}
+
+.card > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  align-self: center;
+  border-radius: 2px;
+}
+
+.card::after {
+  filter: blur(1.1rem);
+}
+
+/* gradient Animation */
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* hero */
+
+.hero {
+  display: grid;
+  gap: 1em;
+  grid-template-areas:
+    "image"
+    "heading"
+    "paragraph";
+  position: relative;
+}
+
+.hero::before {
+  border-radius: 0.2em;
+  bottom: -0.5em;
+  content: "";
+  grid-row: 1/2;
+  left: -0.5em;
+  position: absolute;
+  right: -0.5em;
+  top: -0.5em;
+  z-index: -1;
+}
+
+.hero__title {
+  grid-area: heading;
+  padding: 0.5rem 0;
+}
+
+.hero__paragraph {
+  grid-area: paragraph;
+  font-weight: 500;
+}
+
+.hero .picture {
+  grid-area: image;
+}
+
+/* card2 - resume Button */
+
+.card2 {
+  padding: 7px;
+  background: rgb(46, 44, 44);
+  border-radius: 0.2rem;
+  position: relative;
+}
+
+.card2::before,
+.card2::after {
+  content: "";
+  position: absolute;
+  inset: -0.1em;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    hsla(339, 100%, 55%, 1) 0%,
+    hsla(197, 100%, 64%, 1) 50%,
+    hsla(339, 100%, 55%, 1) 100%
+  );
+  animation: rotation 3s linear infinite;
+  z-index: -1;
+}
+
+.card2::after {
+  filter: blur(0.2rem);
+}
+
+/* SKILLS -- CARDS */
+
+.skills {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 17px;
+}
+
+.skill__card {
+  flex-basis: 110px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  cursor: pointer;
+}
+
+/* skill card box-shadow */
+
+.skill__card:nth-child(1) {
+  box-shadow: 1px 1px 8px rgba(233, 107, 5, 0.74);
+}
+.skill__card:nth-child(2) {
+  box-shadow: 1px 1px 8px rgba(11, 106, 230, 0.74);
+}
+.skill__card:nth-child(3) {
+  box-shadow: 1px 1px 8px rgba(233, 236, 19, 0.74);
+}
+.skill__card:nth-child(4) {
+  box-shadow: 1px 1px 8px rgba(98, 226, 235, 0.74);
+}
+.skill__card:nth-child(5) {
+  box-shadow: 1px 1px 8px rgba(59, 226, 17, 0.74);
+}
+.skill__card:nth-child(6) {
+  box-shadow: 1px 1px 8px rgba(83, 156, 190, 0.918);
+}
+.skill__card:nth-child(7) {
+  box-shadow: 1px 1px 8px rgba(238, 35, 21, 0.74);
+}
+
+.skill__card > img {
+  width: 100%;
+  height: auto;
+  align-self: center;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 9px;
+}
+
+/* projects */
+
+.projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 17px;
+}
+
+.project__card {
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  padding-bottom: 10px;
+  background-color: white;
+  /* cursor: pointer; */
+}
+
+/* media queries */
+
+@media (max-width: 401px) {
+  .skill__card {
+    flex-basis: 75px;
+  }
+  .skill__card:nth-child(3) {
+    font-size: 0.7rem;
+  }
+  .skill__card:nth-child(6) {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 490px) {
+  .card {
+    height: 50vh;
+    aspect-ratio: 1/1.5;
+  }
+}
+
+@media only screen and (min-width: 30em) {
+  .hero {
+    grid-template-areas:
+      "image heading"
+      "paragraph paragraph";
+  }
+}
+
+@media only screen and (min-width: 40em) {
+  .hero .picture {
+    height: 100%;
+    max-height: 21rem;
+    max-width: 6rem;
+    min-width: 15rem;
+    width: 100%;
+  }
+  .card::after {
+    filter: blur(0.8em);
+  }
+  .hero::before {
+    background: hsla(905, 86%, 20%, 1);
+  }
+}
+
+@media only screen and (min-width: 65em) {
+  .hero {
+    grid-template-areas:
+      "image heading"
+      "image paragraph";
+  }
+  .vt .date {
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 90em) {
+  .project__card {
+    flex-basis: 560px;
+  }
+}

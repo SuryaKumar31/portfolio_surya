@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.li-style {
+  @apply rounded py-2 px-2 hover:bg-cyan-200  md:px-3;
+}
